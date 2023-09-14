@@ -61,7 +61,7 @@ export class WebGL {
       const x = (event.clientX / window.innerWidth) * 2.0 - 1.0;
       const y = (event.clientY / window.innerHeight) * 2.0 - 1.0;
       const v = new THREE.Vector2(x, -y);
-      const intersects = this.raycaster.intersectObjects(this.planeArray);
+      const intersects = this.raycaster.intersectObjects(this.plane);
 
       if (intersects.length > 0) {
         const object = intersects[0].object;
@@ -125,7 +125,7 @@ export class WebGL {
     // const loader = new THREE.TextureLoader();
     const planeGeometry = new THREE.PlaneGeometry(1, 1);
     const planeMaterial = new THREE.MeshPhongMaterial({
-      color: 0xffffffff,
+      color: 0xfffff0f0f,
       // map: texture,
     });
     this.plane = new THREE.Mesh(planeGeometry, planeMaterial);
