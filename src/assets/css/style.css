@@ -3,11 +3,14 @@
   padding: 0;
   font-family: "Secular One", sans-serif;
 }
+
 html,body { 
-  overflow-x: hidden; 
+  overflow-x: hidden;
+  overscroll-behavior: none;
 }
+
 canvas {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   z-index: -1;
@@ -33,4 +36,5 @@ h1 {
 .item {
   width: calc(50% - 8px);
   aspect-ratio: 3 / 2;
+  opacity: 0;
 }

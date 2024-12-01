@@ -13,6 +13,8 @@ export class Setup {
     this.scene = null;
     this.camera = null;
     this.controls = null;
+
+    this.init();
   }
 
   init() {
