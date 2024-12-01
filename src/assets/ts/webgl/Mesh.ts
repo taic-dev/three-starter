@@ -64,8 +64,7 @@ export class Mesh {
     this.meshes.push(this.mesh);
   }
 
-  update() {
-    console.log(this.elements)
+  updateMesh() {
     if(!this.mesh) return;
     this.elements?.forEach((element, i) => {
       const info = getImagePositionAndSize(element);
@@ -74,5 +73,9 @@ export class Mesh {
       this.meshes[i].position.x = info.dom.x;
       this.meshes[i].position.y = info.dom.y;
     })
+  }
+
+  resize() {
+    this.updateMesh();
   }
 }

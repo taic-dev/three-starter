@@ -59,4 +59,12 @@ export class Setup {
     const axesHelper = new THREE.AxesHelper(2000);
     this.scene?.add(axesHelper);
   }
+
+  resize() {
+    if (!this.camera) return;
+    this.renderer?.setPixelRatio(window.devicePixelRatio);
+    this.camera.aspect = window.innerWidth / window.innerHeight;
+    this.renderer?.setSize(window.innerWidth, window.innerHeight);
+    this.camera?.updateProjectionMatrix();
+  }
 }

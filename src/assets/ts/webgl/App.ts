@@ -19,4 +19,13 @@ export class App {
     if(!this.setup.scene || !this.setup.camera) return
     this.setup.renderer?.render(this.setup.scene, this.setup.camera)
   }
+
+  update() {
+    this.mesh.updateMesh();
+  }
+
+  resize() {
+    this.setup.resize();
+    this.mesh.resize();
+  }
 }
