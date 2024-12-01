@@ -14,16 +14,14 @@ export class Mesh {
 
   constructor(setup: Setup) {
     this.setup = setup
-    this.elements = null
+    this.elements = [...document.querySelectorAll<HTMLImageElement>('.js-item-image')];
     this.mesh = null
     this.meshes = []
     this.loader = null
   }
 
   init() {
-    this.elements = [...document.querySelectorAll<HTMLImageElement>('.js-item-image')];
-
-    this.elements.forEach((element) => {
+    this.elements?.forEach((element) => {
       const info = getImagePositionAndSize(element);
       this.setUniforms(info)
       this.setMesh(info)
@@ -64,5 +62,17 @@ export class Mesh {
     this.mesh.position.y = info.dom.y;
 
     this.meshes.push(this.mesh);
+  }
+
+  update() {
+    console.log(this.elements)
+    if(!this.mesh) return;
+    this.elements?.forEach((element, i) => {
+      const info = getImagePositionAndSize(element);
+      this.meshes[i].scale.x = info.dom.width;
+      this.meshes[i].scale.y = info.dom.height;
+      this.meshes[i].position.x = info.dom.x;
+      this.meshes[i].position.y = info.dom.y;
+    })
   }
 }
