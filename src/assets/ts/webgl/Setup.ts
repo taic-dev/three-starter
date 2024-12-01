@@ -6,6 +6,7 @@ export class Setup {
   renderer: THREE.WebGLRenderer | null
   scene: THREE.Scene | null
   camera: THREE.PerspectiveCamera | null
+  loader: THREE.TextureLoader
   controls: OrbitControls | null
 
   constructor() {
@@ -13,6 +14,7 @@ export class Setup {
     this.scene = null;
     this.camera = null;
     this.controls = null;
+    this.loader = new THREE.TextureLoader();
 
     this.init();
   }

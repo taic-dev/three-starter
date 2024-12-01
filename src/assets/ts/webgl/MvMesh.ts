@@ -1,36 +1,33 @@
 import * as THREE from "three";
 import { Setup } from "./Setup";
-import fragmentShader from "../../shader/list/fragmentShader.glsl"
-import vertexShader from "../../shader/list/vertexShader.glsl"
+import fragmentShader from "../../shader/mv/fragmentShader.glsl"
+import vertexShader from "../../shader/mv/vertexShader.glsl"
 import { PARAMS } from "./constants";
 import { getImagePositionAndSize, ImagePositionAndSize } from "../utils/getElementSize";
 
-export class Mesh {
+export class MvMesh {
   setup: Setup
-  elements: HTMLImageElement[] | null
+  element: HTMLImageElement | null
   mesh: THREE.Mesh | null
-  meshes: THREE.Mesh[]
   loader: THREE.TextureLoader | null
 
   constructor(setup: Setup) {
     this.setup = setup
-    this.elements = [...document.querySelectorAll<HTMLImageElement>('.js-item-image')];
+    this.element = document.querySelector<HTMLImageElement>('.js-mv-image')
     this.mesh = null
-    this.meshes = []
     this.loader = null
   }
 
   init() {
-    this.elements?.forEach((element) => {
-      const info = getImagePositionAndSize(element);
-      this.setUniforms(info)
-      this.setMesh(info)
-    })
+    if(!this.element) return
+    const info = getImagePositionAndSize(this.element);
+    this.setUniforms(info)
+    this.setMesh(info);
   }
 
   setUniforms(info: ImagePositionAndSize) {
     const loader = this.setup.loader;
-    
+
     const commonUniforms = {
       uResolution: { value: new THREE.Vector2(PARAMS.WINDOW.W, PARAMS.WINDOW.H)},
       uMouse: { value: new THREE.Vector2(0, 0) },
@@ -60,22 +57,18 @@ export class Mesh {
     this.mesh.scale.y = info.dom.height;
     this.mesh.position.x = info.dom.x;
     this.mesh.position.y = info.dom.y;
-
-    this.meshes.push(this.mesh);
   }
 
   updateMesh() {
-    if(!this.mesh) return;
-    this.elements?.forEach((element, i) => {
-      const info = getImagePositionAndSize(element);
-      this.meshes[i].scale.x = info.dom.width;
-      this.meshes[i].scale.y = info.dom.height;
-      this.meshes[i].position.x = info.dom.x;
-      this.meshes[i].position.y = info.dom.y;
-    })
+    if(!this.mesh || !this.element) return;
+      const info = getImagePositionAndSize(this.element);
+      this.mesh.scale.x = info.dom.width;
+      this.mesh.scale.y = info.dom.height;
+      this.mesh.position.x = info.dom.x;
+      this.mesh.position.y = info.dom.y;
   }
 
   resize() {
-    this.updateMesh();
+    this.updateMesh()
   }
 }
