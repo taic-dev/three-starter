@@ -10,8 +10,8 @@ canvas {
   position: absolute;
   top: 0;
   left: 0;
-  /* z-index: -1;
-  pointer-events: none; */
+  z-index: -1;
+  /* pointer-events: none; */
 }
 
 img {
@@ -31,6 +31,6 @@ h1 {
 }
 
 .item {
-  width: calc(50% - 16px);
+  width: calc(50% - 8px);
   aspect-ratio: 3 / 2;
 }
