@@ -1,4 +1,4 @@
-# three-starter
+# Three.js Development Template: three-starter
 
 A modern starter template for creating Three.js projects using TypeScript and Vite. This template is designed to streamline the setup process, so you can focus on developing your 3D applications.
 
@@ -78,3 +78,7 @@ Contributions are welcome! Please follow these steps:
 
 ### License
 This project is licensed under the [MIT License](./LICENSE).
+
+### Contributing
+
+Feel free to open issues or submit pull requests to enhance this template. Contributions are welcome!
