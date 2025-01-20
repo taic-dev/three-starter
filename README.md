@@ -56,23 +56,6 @@ To preview the production build:
 npm run preview
 ```
 
-### File Structure
-
-```bash
-three-starter/
-├── public/            # Static assets
-├── src/               # Source code
-│   ├── assets/        # Models, textures, etc.
-│   ├── shaders/       # GLSL shader files
-│   ├── styles/        # CSS/SCSS files
-│   ├── main.ts        # Entry point
-├── tsconfig.json      # TypeScript configuration
-├── vite.config.ts     # Vite configuration
-├── package.json       # Dependencies and scripts
-└── README.md          # Project documentation
-
-```
-
 ### Dependencies
 - three: Core 3D rendering library.
 - gsap: Animation library for smooth transitions and effects.
