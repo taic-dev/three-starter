@@ -14,7 +14,6 @@ export class App {
   }
 
   init() {
-    this.setup.init();
     this.mvMesh.init();
     this.mesh.init();
   }
