@@ -33,6 +33,11 @@ export class Setup {
     element?.appendChild(this.renderer.domElement);
   }
 
+  updateRenderer() {
+    this.renderer?.setSize(window.innerWidth, window.innerHeight);
+    this.renderer?.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  }
+
   setScene() {
     this.scene = new THREE.Scene();
   }
@@ -50,6 +55,15 @@ export class Setup {
     this.camera.position.set(0, 0, dist);
   }
 
+  updateCamera() {
+    if (!this.camera) return;
+    this.camera.aspect = window.innerWidth / window.innerHeight;
+    this.camera?.updateProjectionMatrix();
+    const fovRad = (PARAMS.CAMERA.FOV / 2) * (Math.PI / 180);
+    const dist = window.innerHeight / 2 / Math.tan(fovRad);
+    this.camera.position.set(0, 0, dist);
+  }
+
   setHelper() {
     if (!this.camera) return;
     // OrbitControls
@@ -63,10 +77,7 @@ export class Setup {
   }
 
   resize() {
-    if (!this.camera) return;
-    this.renderer?.setPixelRatio(window.devicePixelRatio);
-    this.camera.aspect = window.innerWidth / window.innerHeight;
-    this.renderer?.setSize(window.innerWidth, window.innerHeight);
-    this.camera?.updateProjectionMatrix();
+    this.updateRenderer();
+    this.updateCamera();
   }
 }
