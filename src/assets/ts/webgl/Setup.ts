@@ -1,6 +1,7 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import { PARAMS } from "./constants";
+import GUI from "lil-gui";
 
 export class Setup {
   renderer: THREE.WebGLRenderer | null
@@ -9,6 +10,7 @@ export class Setup {
   ambientLight: THREE.AmbientLight | null
   directionalLight: THREE.DirectionalLight | null;
   loader: THREE.TextureLoader
+  guiValue: any
   controls: OrbitControls | null
 
   constructor() {
@@ -18,6 +20,7 @@ export class Setup {
     this.ambientLight = null;
     this.directionalLight = null
     this.controls = null;
+    this.guiValue = null
     this.loader = new THREE.TextureLoader();
 
     this.init();
@@ -29,6 +32,7 @@ export class Setup {
     this.setCamera();
     this.setAmbientLight();
     this.setDirectionalLight();
+    this.setGui();
     this.setHelper();
   }
 
@@ -79,6 +83,16 @@ export class Setup {
   setAmbientLight() {
     this.ambientLight = new THREE.AmbientLight(0xffffff, 10)
     this.scene?.add(this.ambientLight);
+  }
+
+  setGui() {
+    const gui = new GUI();
+    this.guiValue = {
+      color: { r: 0.8314, g: 0.898, b: 1.0 },
+      wireframe: false,
+    };
+    gui.addColor(this.guiValue, "color")
+    gui.add(this.guiValue, "wireframe");
   }
 
 
