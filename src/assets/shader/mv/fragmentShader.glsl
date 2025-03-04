@@ -10,12 +10,12 @@ varying vec2 vUv;
 void main() {
   // アスペクトを計算
   float planeAspect = uPlaneSize.x / uPlaneSize.y;
-  float calligraphyAspect = uTextureSize.x / uTextureSize.y;
+  float textureAspect = uTextureSize.x / uTextureSize.y;
 
   // 画像のアスペクトとプレーンのアスペクトを比較し、短い方に合わせる
   vec2 ratio = vec2(
-    min(planeAspect / calligraphyAspect, 1.0),
-    min((1.0 / planeAspect) / (1.0 / calligraphyAspect), 1.0)
+    min(planeAspect / textureAspect, 1.0),
+    min((1.0 / planeAspect) / (1.0 / textureAspect), 1.0)
   );
 
   // 計算結果を用いて補正後のuv値を生成
