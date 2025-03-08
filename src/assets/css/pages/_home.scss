@@ -1,3 +1,7 @@
+@use "../base/variables" as *;
+@use "../base/functions" as *;
+@use "../base/mixins" as *;
+
 .mv {
   display: flex;
   align-items: center;

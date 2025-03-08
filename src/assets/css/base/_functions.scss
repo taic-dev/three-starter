@@ -1,15 +1,17 @@
-@use 'sass:math';
+@use "sass:math";
+@use "sass:map";
+@use "./variables" as *;
 
 @function rem($size) {
   @return math.div($size, 16) * 1rem;
 }
 
 @function vw($size) {
-  @return math.div($size, map-get($design-size, pc-width)) * 100vw;
+  @return math.div($size, map.get($design-size, pc-width)) * 100vw;
 }
 
 @function vw_sp($size) {
-  @return math.div($size, map-get($design-size, sp-width)) * 100vw;
+  @return math.div($size, map.get($design-size, sp-width)) * 100vw;
 }
 
 // letter-spacing

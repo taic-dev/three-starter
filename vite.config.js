@@ -14,6 +14,13 @@ export default defineConfig({
     glslify(),
     gltf({ include: ["**/*.gltf", '**/*.glb'] }),
   ],
+  css: {
+    preprocessorOptions: {
+      scss: {
+        api: "modern-compiler",
+      },
+    },
+  },
   build: {
     outDir: "../dist",
     emptyOutDir: true,

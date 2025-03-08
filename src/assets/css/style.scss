@@ -1,9 +1,9 @@
-@import "./base/reset";
-@import "./base/variables";
-@import "./base/functions";
-@import "./base/mixins";
-@import "./base/base";
+@use "./base/reset";
+@use "./base/variables";
+@use "./base/functions";
+@use "./base/mixins";
+@use "./base/base";
 
-@import "./pages/**/*";
+@use "./pages/**/*";
 
-@import "./parts/**/*";
+@use "./parts/**/*";
